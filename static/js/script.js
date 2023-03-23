@@ -1,4 +1,12 @@
 // mobile nav bar
+let mySwiper = new Swiper('.swiper', {
+    direction: 'horizontal', // autoplay from left to right
+    autoplay: {
+        delay: 5000, // time between slides in milliseconds
+    },
+    // other options here...
+});
+
 $(document).ready(function() {
     $(".mobile-nav i").click(function() {
         $(".site-nav-menu").toggleClass("mobile-menu");
