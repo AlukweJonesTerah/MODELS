@@ -32,7 +32,7 @@ let swiper = new Swiper(".mySwiper", {
 
 const emailRegex = /^\S+@\S+\.\S+$/;
 const newsletterform = document.querySelector('#newsletterform');
-const newsemail = document.querySelector('#email');
+const newsemail = document.querySelector('#newsletteremail');
 
 newsletterform.addEventListener('submit', function(event) {
     if (newsemail.value.length < 10 && email.value.length > 50) {
@@ -44,7 +44,7 @@ newsletterform.addEventListener('submit', function(event) {
         newsemail.focus();
         return;
     } else {
-        alert('Thank you for subscribing to our newsletter. We will ensure you are always up-to-date.');
+        confirm('Thank you for subscribing to our newsletter. We will ensure you are always up-to-date.');
         return;
     }
 
@@ -72,6 +72,10 @@ contactform.addEventListener('submit', function(event) {
         concole.log("Please enter a valid email");
         fullName.focus();
         return;
+    } else if (fullName.value.length < 3) {
+        alert('Your name is too short for a full name');
+        fullName.focus();
+        return;
     } else if (email.value.length < 10 && email.value.length > 50) {
         alert('Your email is too short or too long. Let it have a range of 10 - 50 characters ');
         email.focus();
@@ -82,16 +86,22 @@ contactform.addEventListener('submit', function(event) {
         return;
     } else if (text.value === "") {
         alert('Please write something before submiting the form!');
+        text.focus();
         return;
-    } else if (text.value.length < 3) {
+    } else if (text.value.length < 10) {
         alert('Your message is too short');
-        email.focus();
+        text.focus();
         return;
     } else {
-        alert("Thank you for sending us  your message we will respond as soon as possible!! ");
+        confirm("Thank you for sending us  your message we will respond as soon as possible!! ");
         return;
     }
     // if all the fields are vaild, submit the form
     contactform.submit();
 
 });
+
+function ad() {
+    document.getElementById("Adbutton").style.display = "none";
+    document.getElementById("iframe").style.display = "block";
+}
